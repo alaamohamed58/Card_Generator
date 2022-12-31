@@ -1,0 +1,194 @@
+:root {
+  --header-height: 50px;
+  --dimension: 10px;
+  --aside-width: 80px;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
+input:disabled {
+  cursor: not-allowed;
+  opacity: 0.99;
+}
+body {
+  background-color: #ddd !important;
+}
+
+/* header */
+header {
+  height: var(--header-height);
+  background: linear-gradient(to right, #60bfee, #687cc1);
+}
+
+header img {
+  width: 20px;
+}
+header nav ul li {
+  cursor: pointer;
+}
+.range-container {
+  background-color: #19181d;
+  top: 100%;
+}
+header nav ul li.close .range-container {
+  display: flex !important;
+}
+header nav ul li.close:hover .pop-up {
+  display: none;
+}
+#side-nav {
+  height: calc(100vh - var(--header-height));
+  width: var(--aside-width);
+  background-color: #19181d;
+}
+input[type="file"] {
+  opacity: 0;
+  height: 100%;
+  cursor: pointer;
+}
+li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  height: 50px;
+  text-align: center;
+}
+#side-nav li {
+  margin-bottom: 20px;
+}
+#side-nav ul li.active,
+#side-nav ul li:hover:not(li:last-of-type) {
+  background-color: #383939;
+}
+#side-nav ul li img {
+  width: 30px;
+  filter: invert();
+}
+
+.pop-up {
+  display: none;
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  background: #000;
+  z-index: 11;
+  transform: translateY(-50%);
+  padding: 6px;
+  border-radius: 10px;
+  font-size: 13px;
+}
+.pop-up.down {
+  top: 113%;
+  left: 0px;
+  font-size: 10px;
+}
+li:hover .pop-up {
+  display: block;
+}
+/* cart */
+section {
+  margin-left: var(--aside-width);
+}
+#card {
+  width: 50%;
+  height: 600px;
+  margin: 45px auto 120px 45px;
+  position: relative;
+  overflow: hidden;
+}
+#card > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  user-select: none;
+  width: auto;
+  height: 70px;
+}
+#card-validity {
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+}
+#card-duaration {
+  bottom: var(--dimension);
+  left: 50%;
+  transform: translateX(-50%);
+}
+#pass {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+#card-date {
+  left: var(--dimension);
+  top: var(--dimension);
+}
+
+#serial {
+  bottom: var(--dimension);
+  left: var(--dimension);
+}
+#card-price {
+  bottom: var(--dimension);
+  left: 80%;
+}
+#logo-container {
+  width: 110px !important;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 2%;
+}
+#logo-container img {
+  width: 100%;
+}
+.hide {
+  display: none !important;
+}
+
+/* font edit  */
+#fontedit {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  gap: 5px;
+  padding: 10px;
+}
+
+#fontedit input:not(input[type="color"]),
+#fontedit button,
+#fontedit select {
+  border: none;
+  padding: 5px;
+}
+#fontedit button {
+  cursor: pointer;
+}
+
+#fontedit button:last-of-type {
+  font-weight: bold;
+}
+#fontedit button:hover {
+  background-color: #ddd;
+}
+h1 {
+  position: relative;
+}
+.bold {
+  font-weight: bold;
+}
+#fontedit div {
+  user-select: none;
+}
+#selected {
+  min-width: 120px;
+  height: 100%;
+}
