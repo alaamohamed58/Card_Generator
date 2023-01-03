@@ -218,3 +218,41 @@ rotateLeft.addEventListener("click", () => {
   rotateLeftVal -= 45;
   logo.style.transform = `rotate(${rotateLeftVal}deg)`;
 });
+
+/****************************************************************************** */
+
+// Add more info
+const addInfoBtn = document.getElementById("data-entry") as HTMLLIElement;
+
+// create container for input info
+const contentDiv = <HTMLDivElement>document.createElement("div");
+contentDiv.setAttribute("id", "info-input");
+
+//create input text
+const inputTextInform = <HTMLInputElement>document.createElement("input");
+inputTextInform.type = "text";
+
+//create button to add the element
+const submitInfoBtn = <HTMLButtonElement>document.createElement("button");
+submitInfoBtn.textContent = "اضافة";
+
+//append element in container
+contentDiv.appendChild(inputTextInform);
+contentDiv.appendChild(submitInfoBtn);
+
+//pop up text
+const popText = document.querySelector(".pop-up") as HTMLElement;
+
+//aside
+const aside = document.getElementById("side-nav") as HTMLElement;
+
+addInfoBtn.addEventListener("click", function () {
+  if (contentDiv.isConnected) {
+    contentDiv.remove();
+  } else {
+    addInfoBtn.appendChild(contentDiv);
+    this.addEventListener("mouseover", () => {
+      popText.style.display = "none";
+    });
+  }
+});
