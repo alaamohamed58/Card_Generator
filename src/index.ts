@@ -261,6 +261,15 @@ addInfoBtn.addEventListener("click", function () {
       popText.style.display = "none";
     });
 
+    contentDiv.querySelector("button").addEventListener("click", () => {
+      // card_container.append(paragInfo);
+    });
+  }
+});
+
+//check
+function responding(evt: any) {
+  if (evt.target.matches("input")) {
     //create element inside card
     const paragInfo = <HTMLParagraphElement>document.createElement("p");
 
@@ -269,15 +278,13 @@ addInfoBtn.addEventListener("click", function () {
       paragInfo.textContent = contentDiv.querySelector("input").value;
     });
 
-    contentDiv.querySelector("button").addEventListener("click", () => {
-      // card_container.append(paragInfo);
-
-      if (paragInfo.isConnected) {
-        paragInfo.textContent = contentDiv.querySelector("input").value;
-      } else if (!card_container.contains(paragInfo)) {
-        card_container.append(paragInfo);
-      } else {
-      }
-    });
+    if (paragInfo.isConnected) {
+      paragInfo.textContent = contentDiv.querySelector("input").value;
+    } else if (!card_container.contains(paragInfo)) {
+      card_container.insertAdjacentElement("beforeend", paragInfo);
+    } else {
+    }
   }
-});
+}
+
+inputTextInform.addEventListener("click", responding);
