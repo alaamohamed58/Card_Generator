@@ -241,18 +241,43 @@ contentDiv.appendChild(inputTextInform);
 contentDiv.appendChild(submitInfoBtn);
 
 //pop up text
-const popText = document.querySelector(".pop-up") as HTMLElement;
-
+const popText = document.querySelector("#data-entry .pop-up") as HTMLElement;
+console.log(popText);
 //aside
 const aside = document.getElementById("side-nav") as HTMLElement;
 
 addInfoBtn.addEventListener("click", function () {
   if (contentDiv.isConnected) {
     contentDiv.remove();
+    this.addEventListener("mouseover", () => {
+      popText.style.display = "block";
+    });
+    this.addEventListener("mouseleave", () => {
+      popText.style.display = "none";
+    });
   } else {
-    addInfoBtn.appendChild(contentDiv);
+    aside.appendChild(contentDiv);
     this.addEventListener("mouseover", () => {
       popText.style.display = "none";
+    });
+
+    //create element inside card
+    const paragInfo = <HTMLParagraphElement>document.createElement("p");
+
+    // add the info box inside card
+    contentDiv.querySelector("input").addEventListener("input", () => {
+      paragInfo.textContent = contentDiv.querySelector("input").value;
+    });
+
+    contentDiv.querySelector("button").addEventListener("click", () => {
+      // card_container.append(paragInfo);
+
+      if (paragInfo.isConnected) {
+        paragInfo.textContent = contentDiv.querySelector("input").value;
+      } else if (!card_container.contains(paragInfo)) {
+        card_container.append(paragInfo);
+      } else {
+      }
     });
   }
 });
