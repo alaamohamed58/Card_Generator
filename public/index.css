@@ -1,5 +1,5 @@
 :root {
-  --header-height: 50px;
+  --header-height: 90px;
   --dimension: 10px;
   --aside-width: 80px;
 }
@@ -20,10 +20,16 @@ body {
 
 /* header */
 header {
-  height: var(--header-height);
+ height: var(--header-height);
+  flex-wrap: wrap;
+  align-items: center;
   background: linear-gradient(to right, #60bfee, #687cc1);
 }
-
+@media(max-width: 767px) {
+  header {
+    height: 100%;
+  }
+}
 header img {
   width: 20px;
 }
@@ -41,7 +47,7 @@ header nav ul li.close:hover .pop-up {
   display: none;
 }
 #side-nav {
-  height: calc(100vh - var(--header-height));
+  min-height: calc(100vh - var( --header-height));
   width: var(--aside-width);
   background-color: #19181d;
 }
@@ -59,9 +65,7 @@ li {
   height: 50px;
   text-align: center;
 }
-#side-nav li {
-  margin-bottom: 20px;
-}
+
 #side-nav ul li.active,
 #side-nav ul li:hover:not(li:last-of-type) {
   background-color: #383939;
@@ -94,15 +98,23 @@ li:hover .pop-up {
 }
 /* cart */
 section {
-  margin-left: var(--aside-width);
+  width: calc(100% - var(--aside-width) );
+  margin-left: 80px;
+  padding: 10px;
 }
 #card {
   width: 50%;
-  height: 600px;
-  margin: 45px auto 120px 45px;
+  height: 375px;
   position: relative;
   overflow: hidden;
 }
+
+@media(max-width : 767px) {
+  #card{
+    width: 100%;
+  }
+}
+
 #card > div {
   display: flex;
   align-items: center;
@@ -124,8 +136,8 @@ section {
 }
 #pass {
   left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  top: 80%;
+  transform: translate(-50%, -80%);
 }
 #card-date {
   left: var(--dimension);
@@ -158,6 +170,8 @@ section {
 #fontedit {
   display: flex;
   align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
   width: fit-content;
   gap: 5px;
   padding: 10px;
@@ -190,7 +204,7 @@ h1 {
 }
 #selected {
   min-width: 120px;
-  height: 100%;
+  padding: 12px;
 }
 
 /*input for info*/
