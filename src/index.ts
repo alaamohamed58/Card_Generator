@@ -163,9 +163,8 @@ function updateLogo(): void {
 function setLogo(fileInput: HTMLInputElement) {
   let curFiles = fileInput.files;
   let img: HTMLImageElement = document.createElement("img");
-  let logoContainer = document.getElementById(
-    "logo-container"
-  ) as HTMLDivElement;
+  let logoContainer = document.createElement("div") as HTMLDivElement;
+  logoContainer.setAttribute("id", "logo-container");
 
   for (const file of curFiles) {
     while (logoContainer.lastElementChild) {
@@ -179,6 +178,7 @@ function setLogo(fileInput: HTMLInputElement) {
       img.alt = `logo`;
       logoContainer.appendChild(img);
       card_container.appendChild(logoContainer);
+      dragAndDrop();
     }
   }
 }
@@ -277,6 +277,7 @@ contentDiv.querySelector("#info-input button").addEventListener("click", () => {
 });
 if (paragInfo.isConnected) {
   paragInfo.textContent = contentDiv.querySelector("input").value;
+  dragAndDrop();
 } else if (!card_container.contains(paragInfo)) {
   card_container.insertAdjacentElement("beforeend", paragInfo);
 } else {
@@ -290,12 +291,3 @@ contentDiv.querySelector("#info-input button").addEventListener("click", () => {
   card_container.appendChild(paragInfo);
   dragAndDrop();
 });
-//add logo
-const logoBtn = <HTMLButtonElement>document.getElementById("logoBtn");
-logoBtn.onclick = function () {
-  let p = document.createElement("p");
-  p.textContent = "get";
-  card_container.appendChild(p);
-
-  dragAndDrop();
-};
