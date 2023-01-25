@@ -16,7 +16,7 @@
       crossorigin="anonymous"
     />
 
-    <title>Snowpack App</title>
+    <title>WIFI Cards Generator</title>
   </head>
   <body>
     <!-- header -->
@@ -72,7 +72,8 @@
           <img src="/assets/icons/text.png" alt="text-icon" />
           <p class="pop-up">ادخال معلومات</p>
         </li>
-        <li data-inform="#qrCode">
+
+        <li data-inform="#qrCode" id="qrCodeChecker">
           <img src="/assets/icons/qr-code.png" alt="qr-icon" />
           <p class="pop-up">كود فحص</p>
         </li>
@@ -95,14 +96,7 @@
           <p class="pop-up">سعر الكارت</p>
         </li>
 
-        <li><button type="button" class="btn btn-danger">Print</button>
-        
-
-          
-        
-
-
-        </li>
+        <li><button type="button" class="btn btn-danger">Print</button></li>
       </ul>
     </aside>
 
@@ -117,15 +111,47 @@
         <!-- cart price  -->
         <div id="card-price">سعر الكارت</div>
         <div id="serial">الرقم التسلسلي</div>
-        <div id="pass">رمز الدخول</div>
+        <!-- <div id="qrCode">رمز الدخول</div> -->
         <!-- card date -->
         <div id="card-date"></div>
-        <!-- <div style = "width : 260px; height : 260px; background : red"></div> -->
-        <!-- <div id="logo-container"></div> -->
       </div>
     </section>
 
     <script type="module" src="/dist/index.js"></script>
     <script type="module" src="/dist/drag.js"></script>
+
+    <script src="/qrcode.min.js"></script>
+
+    <!-- QR Code  -->
+
+    <script>
+      const card = document.getElementById("card");
+      //fetching parcode
+      function makeCode(ele, value) {
+        let qrcode = new QRCode(ele);
+        qrcode.makeCode(value.toString());
+      }
+      let qrContent = document.createElement("div"),
+        dataContent = document.createElement("span");
+      let qrCodeChecker = document.getElementById("qrCodeChecker");
+
+      qrContent.id = "qrCode";
+      qrContent.style.cssText = `z-index : 111`;
+      makeCode(qrContent, "123456789");
+      card.appendChild(qrContent);
+
+      // card.appendChild(qrContent);
+      if (qrCodeChecker.classList.add("active")) {
+        if (dataContent.isConnected) {
+          dataContent.textContent = "dads";
+        }
+        card.appendChild(qrContent);
+        document.querySelector("#qrCode img").style.display = "block";
+      }
+      if (qrCodeChecker.classList.contains("active")) {
+        card.appendChild(dataContent);
+        dataContent.textContent = "123456789";
+      }
+    </script>
   </body>
 </html>

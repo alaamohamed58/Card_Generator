@@ -121,6 +121,9 @@ section {
   justify-content: center;
   position: absolute;
   user-select: none;
+
+}
+#card > div:not(#qrCode){
   width: auto;
   height: 70px;
 }
@@ -206,7 +209,12 @@ h1 {
   min-width: 120px;
   padding: 12px;
 }
-
+#qrCode {
+  width: 70px;
+}
+#qrCode img {
+  width: 100%;
+}
 /*input for info*/
 #info-input {
   position: absolute;
