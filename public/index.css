@@ -142,8 +142,9 @@ section {
   top: 80%;
   transform: translate(-50%, -80%);
 }
-#card-date {
-  left: var(--dimension);
+#card_date {
+  left:50%;
+  transform: translateX(-50%);
   top: var(--dimension);
 }
 
@@ -155,6 +156,7 @@ section {
   bottom: var(--dimension);
   left: 80%;
 }
+
 #logo-container {
   width: 110px !important;
   position: absolute;
@@ -211,6 +213,8 @@ h1 {
 }
 #qrCode {
   width: 70px;
+  top: 194px;
+  left: 209px;
 }
 #qrCode img {
   width: 100%;

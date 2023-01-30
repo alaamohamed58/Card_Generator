@@ -10,9 +10,21 @@ sideBarElements.forEach((li: any) => {
 /**************************************************************************************** */
 
 //date
-const card_date = document.getElementById("card-date") as HTMLDivElement;
+const card_date = document.createElement("div") as HTMLDivElement;
 
 card_date.textContent = new Date().toLocaleDateString();
+
+const dateBtn = document.getElementById("date-btn") as HTMLLIElement;
+document.querySelector("#card").appendChild(card_date);
+card_date.id = "card_date";
+dateBtn.addEventListener("click", () => {
+  if (dateBtn.classList.contains("active")) {
+    document.querySelector("#card").appendChild(card_date);
+  } else {
+    card_date.remove();
+  }
+  dragAndDrop();
+});
 
 /**************************************************************************************** */
 
@@ -21,7 +33,11 @@ sideBarElements.forEach(function (li: any): void {
   li.addEventListener("click", function () {
     if (this.dataset.inform) {
       let item = document.querySelector(this.dataset.inform);
-      item.classList.toggle("hide");
+      if (item !== null) {
+        item.classList.toggle("hide");
+      }
+    } else {
+      return;
     }
   });
 });
@@ -274,12 +290,12 @@ paragInfo.style.cssText = `
 
 contentDiv.querySelector("#info-input button").addEventListener("click", () => {
   contentDiv.remove();
+  card_container.insertAdjacentElement("beforeend", paragInfo);
 });
 if (paragInfo.isConnected) {
   paragInfo.textContent = contentDiv.querySelector("input").value;
   dragAndDrop();
 } else if (!card_container.contains(paragInfo)) {
-  card_container.insertAdjacentElement("beforeend", paragInfo);
 } else {
 }
 
@@ -291,3 +307,6 @@ contentDiv.querySelector("#info-input button").addEventListener("click", () => {
   card_container.appendChild(paragInfo);
   dragAndDrop();
 });
+
+//trigger drag and drop
+dragAndDrop();

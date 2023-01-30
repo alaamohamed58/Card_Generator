@@ -111,9 +111,6 @@
         <!-- cart price  -->
         <div id="card-price">سعر الكارت</div>
         <div id="serial">الرقم التسلسلي</div>
-        <!-- <div id="qrCode">رمز الدخول</div> -->
-        <!-- card date -->
-        <div id="card-date"></div>
       </div>
     </section>
 
@@ -142,15 +139,15 @@
 
       // card.appendChild(qrContent);
       if (qrCodeChecker.classList.add("active")) {
-        if (dataContent.isConnected) {
-          dataContent.textContent = "dads";
-        }
+        // if (dataContent.isConnected) {
+        //   dataContent.textContent = "dads";
+        // }
         card.appendChild(qrContent);
         document.querySelector("#qrCode img").style.display = "block";
       }
       if (qrCodeChecker.classList.contains("active")) {
         card.appendChild(dataContent);
-        dataContent.textContent = "123456789";
+        // dataContent.textContent = "123456789";
       }
     </script>
   </body>
